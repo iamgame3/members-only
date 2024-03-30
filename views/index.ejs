@@ -2,10 +2,19 @@
 <html>
   <head>
     <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/normalize.css' />
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
+    <nav>
+      <ul>
+        <li><a href="/" class="home-link">Back To Home</a></li>
+        <li><a href="/log-in" class="home-link">Log In</a></li>
+        <li><a href="/sign-up" class="home-link">Sign Up</a></li>
+        <li><a href="/membership" class="home-link">Become A Member</a></li>
+        <li><a href="/admin" class="home-link">Become An Admin</a></li>
+      </ul>
+    </nav>
+    <main></main>
   </body>
 </html>
