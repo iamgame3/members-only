@@ -71,3 +71,8 @@ li {
     cursor: pointer;
     background-color: rgb(24, 118, 180);
 }
+
+.error-list {
+    color: red;
+    margin-top: 32px;
+}

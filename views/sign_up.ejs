@@ -20,20 +20,20 @@
 
         <form method="POST">
             <label for="fname">First Name:</label>
-            <input id="fname" class="form-input" type="text" placeholder="John" name="fname" required>
+            <input id="fname" class="form-input" type="text" placeholder="John" name="fname" required value="<%= (typeof first_name === 'undefined' ? '' : first_name) %>">
             <label for="lname">Last Name:</label>
-            <input id="lname" class="form-input" type="text" placeholder="Doe" name="lname" required>
-            <label for="uname">User Name:</label>
-            <input id="uname" class="form-input" type="text" placeholder="DoughyJoe101" name="uname" required>
+            <input id="lname" class="form-input" type="text" placeholder="Doe" name="lname" required value="<%= (typeof last_name === 'undefined' ? '' : last_name) %>">
+            <label for="uname">Username:</label>
+            <input id="uname" class="form-input" type="text" placeholder="DoughyJoe101" name="uname" required value="<%= (typeof username === 'undefined' ? '' : username) %>">
             <label for="password">Password:</label>
-            <input id="password" class="form-input" type="password" name="password" required>
+            <input id="password" class="form-input" type="password" name="password" required value="<%= (typeof password === 'undefined' ? '' : password) %>">
             <label for="confirmPassword">Confirm Password:</label>
-            <input id="confirmPassword" class="form-input" type="password" name="confirmPassword" required>
+            <input id="confirmPassword" class="form-input" type="password" name="confirmPassword" required value="<%= (typeof confirmPassword === 'undefined' ? '' : confirmPassword) %>">
             <button class="submit-button" type="submit">Submit</button>
         </form>
         
         <% if (typeof errors !== 'undefined') { %>
-          <ul>
+          <ul class="error-list">
             <% errors.forEach(function(error) { %>
               <li><%= error.msg %></li>
             <% }); %>
