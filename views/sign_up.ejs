@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/normalize.css' />
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <nav>
+      <ul>
+        <li><a href="/" class="home-link">Back To Home</a></li>
+        <li><a href="/log-in" class="home-link">Log In</a></li>
+        <li><a href="/sign-up" class="home-link">Sign Up</a></li>
+        <li><a href="/membership" class="home-link">Become A Member</a></li>
+        <li><a href="/admin" class="home-link">Become An Admin</a></li>
+      </ul>
+    </nav>
+    <main>
+        <h1><%= title %></h1>
+
+        <form method="POST">
+            <label for="fname">First Name:</label>
+            <input id="fname" class="form-input" type="text" placeholder="John" name="fname" required>
+            <label for="lname">Last Name:</label>
+            <input id="lname" class="form-input" type="text" placeholder="Doe" name="lname" required>
+            <label for="uname">User Name:</label>
+            <input id="uname" class="form-input" type="text" placeholder="DoughyJoe101" name="uname" required>
+            <label for="password">Password:</label>
+            <input id="password" class="form-input" type="password" name="password" required>
+            <label for="confirmPassword">Confirm Password:</label>
+            <input id="confirmPassword" class="form-input" type="password" name="confirmPassword" required>
+            <button class="submit-button" type="submit">Submit</button>
+        </form>
+        
+        <% if (typeof errors !== 'undefined') { %>
+          <ul>
+            <% errors.forEach(function(error) { %>
+              <li><%= error.msg %></li>
+            <% }); %>
+          </ul>
+        <% } %>
+    </main>
+  </body>
+</html>

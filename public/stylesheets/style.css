@@ -1,12 +1,19 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap');
 
 html {
     font-family: 'Roboto', Arial, Helvetica, sans-serif;
+    font-weight: 300;
     letter-spacing: 1px;
 }
 
 body {
     display: flex;
+}
+
+main {
+    padding-left: 64px;
+    padding-right: 64px;
+    width: 100%;
 }
 
 nav {
@@ -37,4 +44,30 @@ li {
 
 .home-link:hover {
     text-decoration: underline;
+}
+
+.form-input {
+    display: block;
+    margin-top: 16px;
+    margin-bottom: 16px;
+    padding: 8px;
+    border: 1px solid #24282a;
+    border-radius: 4px;
+    width: calc(100% - 18px);
+}
+
+.submit-button {
+    margin-top: 32px;
+    width: 96px;
+    height: 48px;
+    border: 1px solid #24282a;
+    border-radius: 8px;
+    transition: all .2s ease-in;
+    background-color: rgb(21, 105, 160);
+    color: white;
+}
+
+.submit-button:hover {
+    cursor: pointer;
+    background-color: rgb(24, 118, 180);
 }
