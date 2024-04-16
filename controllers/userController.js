@@ -1,11 +1,11 @@
 const User = require('../models/user');
 const { body, validationResult } = require("express-validator");
-const bcrypt = require('bcryptjs')
+const bcrypt = require('bcryptjs');
 const asyncHandler = require("express-async-handler");
 
 // Display Sign Up form on GET.
 exports.sign_up_get = (req, res, next) => {
-    res.render("sign_up", { title: "Sign Up" });
+    res.render("sign_up", { title: "Sign Up", user: req.user });
 };
 
 // Handle Sign Up form on POST.
@@ -79,11 +79,15 @@ exports.sign_up_post = [
             } else {
               // Data from form is valid.
               await user.save();
-              // New user saved. Redirect to home page.
-              res.redirect('/');
+              // New user saved. Redirect to log in page.
+              res.redirect('/log-in');
             }
           }
         });
   
     }),
   ];
+
+exports.log_in_get = (req, res, next) => {
+    res.render("log_in", { title: "Log In", user: req.user });
+};
