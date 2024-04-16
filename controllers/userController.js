@@ -68,6 +68,7 @@ exports.sign_up_post = [
               // There are errors. Render the form again with sanitized values/error messages.
               res.render("sign_up", {
                 title: "Sign Up",
+                user: req.user,
                 first_name: req.body.fname,
                 last_name: req.body.lname,
                 username: req.body.uname,

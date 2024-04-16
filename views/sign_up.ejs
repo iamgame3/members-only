@@ -20,6 +20,9 @@
       </ul>
     </nav>
     <main>
+      <% if (user) {%>
+        <h1>ERROR: Already logged in</h1>
+      <% } else { %>
         <h1><%= title %></h1>
 
         <form method="POST">
@@ -37,12 +40,13 @@
         </form>
         
         <% if (typeof errors !== 'undefined') { %>
-          <ul class="error-list">
+          <ul class="error">
             <% errors.forEach(function(error) { %>
               <li><%= error.msg %></li>
             <% }); %>
           </ul>
         <% } %>
+      <%}%>
     </main>
   </body>
 </html>

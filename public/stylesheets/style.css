@@ -72,7 +72,7 @@ li {
     background-color: rgb(24, 118, 180);
 }
 
-.error-list {
+.error {
     color: red;
     margin-top: 32px;
 }
