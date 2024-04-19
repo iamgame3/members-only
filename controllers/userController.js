@@ -89,6 +89,44 @@ exports.sign_up_post = [
     }),
   ];
 
+// Display Log In form on GET.
 exports.log_in_get = (req, res, next) => {
     res.render("log_in", { title: "Log In", user: req.user });
 };
+
+// Display Membership form on GET.
+exports.member_get = (req, res, next) => {
+    res.render("membership", { title: "Become A Member", user: req.user });
+};
+
+// Handle Membership form on POST.
+exports.member_post = [
+  // Validate and sanitize field
+  body("password", "Incorrect password.")
+    .trim()
+    .escape()
+    .custom((value, { req }) => {
+      return value === "member";
+    }),
+
+  // Process request after validation and sanitization.
+  asyncHandler(async (req, res) => {
+    // Extract the validation errors from a request.
+    const errors = validationResult(req);
+      
+          if (!errors.isEmpty()) {
+            // There are errors. Render the form again with sanitized values/error messages.
+            res.render("membership", {
+              title: "Become A Member",
+              user: req.user,
+              password: req.body.password,
+              errors: errors.array(),
+            });
+            return;
+          } else {
+            // Data from form is valid. Make user a member and redirect to homepage.
+            User.findByIdAndUpdate(req.user._id, { member: true });
+            res.redirect('/');
+          }
+  }),
+];

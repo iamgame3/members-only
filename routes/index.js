@@ -21,6 +21,10 @@ router.post('/sign-up', user_controller.sign_up_post);
 
 router.get('/log-in', user_controller.log_in_get);
 
+router.get('/membership', user_controller.member_get);
+
+router.post('/membership', user_controller.member_post);
+
 // OTHER //
 
 router.post(
