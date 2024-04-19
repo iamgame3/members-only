@@ -25,6 +25,10 @@ router.get('/membership', user_controller.member_get);
 
 router.post('/membership', user_controller.member_post);
 
+router.get('/admin', user_controller.admin_get);
+
+router.post('/admin', user_controller.admin_post);
+
 // OTHER //
 
 router.post(

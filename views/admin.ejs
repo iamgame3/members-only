@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/normalize.css' />
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <nav>
+      <ul>
+        <li><a href="/" class="home-link">Back To Home</a></li>
+        <% if (user) {%>
+          <li><a href="/log-out" class="home-link">Log Out</a></li>
+        <% } else { %>
+          <li><a href="/log-in" class="home-link">Log In</a></li>
+        <%}%>
+        <li><a href="/sign-up" class="home-link">Sign Up</a></li>
+        <li><a href="/membership" class="home-link">Become A Member</a></li>
+        <li><a href="/admin" class="home-link">Become An Admin</a></li>
+      </ul>
+    </nav>
+    <main>
+      <% if (!user) {%>
+        <h1>ERROR: Not logged in</h1>
+      <% } else if (user.is_member === false) { %>
+        <h1>ERROR: Not a member</h1>
+        <% } else if (user.is_admin === true) { %>
+          <h1>ERROR: Already an admin</h1>
+      <% } else { %>
+        <h1><%= title %></h1>
+
+        <form action="/admin" method="POST">
+            <label for="password">Password:</label>
+            <input id="password" class="form-input" type="password" name="password" required value="<%= (typeof password === 'undefined' ? '' : password) %>">
+            <button class="submit-button" type="submit">Submit</button>
+        </form>
+        
+        <% if (typeof errors !== 'undefined') { %>
+          <ul class="error">
+            <% errors.forEach(function(error) { %>
+              <li><%= error.msg %></li>
+            <% }); %>
+          </ul>
+        <% } %>
+      <%}%>
+    </main>
+  </body>
+</html>

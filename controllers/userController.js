@@ -125,7 +125,44 @@ exports.member_post = [
             return;
           } else {
             // Data from form is valid. Make user a member and redirect to homepage.
-            User.findByIdAndUpdate(req.user._id, { member: true });
+            User.findByIdAndUpdate(req.user._id, { is_member: true }).exec();
+            res.redirect('/');
+          }
+  }),
+];
+
+// Display Admin form on GET.
+exports.admin_get = (req, res, next) => {
+    res.render("admin", { title: "Become An Admin", user: req.user });
+};
+
+// Handle Admin form on POST.
+exports.admin_post = [
+  // Validate and sanitize field
+  body("password", "Incorrect password.")
+    .trim()
+    .escape()
+    .custom((value, { req }) => {
+      return value === "admin";
+    }),
+
+  // Process request after validation and sanitization.
+  asyncHandler(async (req, res) => {
+    // Extract the validation errors from a request.
+    const errors = validationResult(req);
+      
+          if (!errors.isEmpty()) {
+            // There are errors. Render the form again with sanitized values/error messages.
+            res.render("admin", {
+              title: "Become An Admin",
+              user: req.user,
+              password: req.body.password,
+              errors: errors.array(),
+            });
+            return;
+          } else {
+            // Data from form is valid. Make user an admin and redirect to homepage.
+            User.findByIdAndUpdate(req.user._id, { is_admin: true }).exec();
             res.redirect('/');
           }
   }),
