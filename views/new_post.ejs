@@ -27,6 +27,13 @@
         <h1>ERROR: Not a member</h1>
       <% } else { %>
         <h1><%= title %></h1>
+
+        <form method="POST">
+            <label for="message_title">Title:</label>
+            <input id="message_title" class="form-input" type="text" placeholder="Why This App Is So Awesome" name="message_title" required value="<%= (typeof message_title === 'undefined' ? '' : message_title) %>">
+            <label for="body">Body:</label>
+            <textarea id="body" class="form-input" rows="8" placeholder="Because it is!" name="body" required><%= (typeof body === 'undefined' ? '' : body) %></textarea>
+        </form>
         
         <% if (typeof errors !== 'undefined') { %>
           <ul class="error">
