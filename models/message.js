@@ -10,7 +10,7 @@ const MessageSchema = new Schema({
   author: { type: Schema.Types.ObjectId, ref: "Author", required: true },
 });
 
-AuthorSchema.virtual("time_stamp_formatted").get(function () {
+MessageSchema.virtual("time_stamp_formatted").get(function () {
     return this.time_stamp ? DateTime.fromJSDate(this.time_stamp).toLocaleString(DateTime.DATE_MED) : '';
 });
 

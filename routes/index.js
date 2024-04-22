@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const user_controller = require('../controllers/userController');
+const message_controller = require('../controllers/messageController');
 const passport = require("passport");
 const session = require("express-session");
 
@@ -28,6 +29,10 @@ router.post('/membership', user_controller.member_post);
 router.get('/admin', user_controller.admin_get);
 
 router.post('/admin', user_controller.admin_post);
+
+// MESSAGE CONTROLLER //
+
+router.get('/new-post', message_controller.new_post_get);
 
 // OTHER //
 
