@@ -54,6 +54,13 @@ li {
     background-color: rgb(212, 212, 212);
 }
 
+.nav-title {
+    width: 1px;
+    margin-top: 0;
+    margin-bottom: 32px;
+    font-size: 30px;
+}
+
 .home-link {
     text-decoration: none;
     color: black;
