@@ -34,6 +34,8 @@ router.post('/admin', user_controller.admin_post);
 
 router.get('/new-post', message_controller.new_post_get);
 
+router.post('/new-post', message_controller.new_post_post);
+
 // OTHER //
 
 router.post(
