@@ -1,18 +1,27 @@
 const express = require('express');
 const router = express.Router();
+const Message = require('../models/message');
+const User = require('../models/user');
 const user_controller = require('../controllers/userController');
 const message_controller = require('../controllers/messageController');
 const passport = require("passport");
 const session = require("express-session");
+const asyncHandler = require("express-async-handler");
 
 router.use(session({ secret: "cats", resave: false, saveUninitialized: true }));
 router.use(passport.session());
 router.use(express.urlencoded({ extended: false }));
 
 // Home page
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Home', user: req.user });
-});
+router.get('/', asyncHandler(async(req, res, next) => {
+  const allMessages = await Message.find().sort({ time_stamp: -1 }).exec();
+  res.render('index', { title: 'Home', user: req.user, message_list: allMessages });
+}));
+
+router.post('/', asyncHandler(async(req, res, next) => {
+  await Message.findByIdAndDelete(req.body.messageId);
+  res.redirect("/");
+}));
 
 // USER CONTROLLER //
 

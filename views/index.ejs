@@ -21,7 +21,29 @@
       </ul>
     </nav>
     <main>
-      <a href="/new-post"><button class="new-post-button">+ Create Post</button></a>
+      <% if (user) {%>
+        <a href="/new-post"><button class="new-post-button">+ Create Post</button></a>
+      <% } %>
+      <% message_list.forEach(message => { %>
+        <div class="message">
+          <h2 class="message-title"><%= message.messageTitle %></h2>
+          <% if (typeof user !== "undefined" && user.is_member === true) {%>
+          <p class="message-author"><%= message.author.username %></p>
+          <% } %>
+          <p class="message-body"><%= message.body %></p>
+          <div class="message-footer">
+            <% if (typeof user !== "undefined" && user.is_member === true) {%>
+            <p class="message-time-stamp"><%= message.time_stamp_formatted %></p>
+            <% } %>
+            <% if (typeof user !== "undefined" && user.is_admin === true) {%>
+              <form method="POST">
+                  <input id="messageId" class="hidden-form-input" type="text" name="messageId" required value="<%= message._id %>">
+                  <button class="message-delete-button" type="submit">Delete</button>
+              </form>
+            <% } %>
+          </div>
+        </div>
+      <% }) %>
     </main>
   </body>
 </html>

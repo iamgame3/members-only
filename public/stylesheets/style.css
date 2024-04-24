@@ -58,6 +58,56 @@ textarea {
     background-color: rgb(212, 212, 212);
 }
 
+.message {
+    width: calc(100% - 64px);
+    margin-top: 16px;
+    padding: 32px;
+    padding-top: 16px;
+    padding-bottom: 16px;
+    border: none;
+    border-radius: 16px;
+    background-color: rgb(226, 226, 226);
+}
+
+.message-title {
+    margin-bottom: 8px;
+}
+
+.message-author, .message-time-stamp, .message-delete-button {
+    font-size: 12px;
+    margin-top: 0;
+}
+
+.message-body {
+    margin-top: 32px;
+    margin-bottom: 32px;
+}
+
+.message-footer {
+    display: flex;
+    justify-content: space-between;
+}
+
+.hidden-form-input {
+    display: none;
+}
+
+.message-delete-button {
+    margin-top: -8px;
+    width: 64px;
+    height: 32px;
+    border: 1px solid #24282a;
+    border-radius: 8px;
+    transition: all .2s ease-in;
+    background-color: rgb(21, 105, 160);
+    color: white;
+}
+
+.message-delete-button:hover {
+    cursor: pointer;
+    background-color: rgb(24, 118, 180);
+}
+
 .nav-title {
     width: 1px;
     margin-top: 0;
